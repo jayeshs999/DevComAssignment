@@ -1,0 +1,164 @@
+
+                    DevCom Assignment
+Name-Jayesh Singla
+Contact No-7814985451
+Email ID –  jayesh11.3.01@gmail.com
+
+                        Research
+
+a. What is the entire cycle of events that follows when you type in the url of a webpage?
+
+Ans- Every URL on the internet has a specific IP address linked to it. The IP address belongs to the computer which hosts the server of the website we are requesting to access.DNS(Domain Name System) is a database that maintains the record of URLs and their corresponding IP addresses. DNS helps in user-friendly navigation as we don’t need to remember all the digits in different IP addresses
+To access a website, we need the IP address corresponding to its URL.The task of finding this address is done by the browser.
+The steps are-:
+1.	The browser checks the browser cache. It is a repository of DNS records for a fixed duration for websites you have previously visited. So, it is the first place to run a DNS query.
+2.	The OS also maintains a cache of DNS records. If the above step fails the browser will make a system call to the underlying OS to check the OS cache
+3.	Failing even this it checks the router cache
+4.	If all steps fail, the browser will move on to the ISP. Your ISP maintains its’ own DNS server, which includes a cache of DNS records, which the browser would check with the last hope of finding your requested URL.
+Maintaining these caches is necessary as they help in regulating networking traffic. We can easily find IP addresses of common and previously visited URLs and thus it reduces data transfer times.
+
+If the requested URL is not in the cache, ISP’s DNS server initiates a DNS query to find the IP address of the server that hosts the website. ISP’s DNS server a DNS recursor whose responsibility is to find the proper IP address of the intended domain name by asking other DNS servers on the internet for an answer.Search will repeatedly continue from a DNS server to a DNS server until it either finds the IP address we need or returns an error response saying it was unable to find it.These requests are sent in the form of small packets of data which contain the request content and the IP address of the DNS recursor where the appropriate IP address must be returned. If these packets get lost, you’ll get a request failed error.
+After that a TCP connection is set up and then HTTP requests are sent to the webserver to which the webserver sends and appropriate response such as an HTML response for a webpage.
+Details are given in the questions that follow.
+
+
+b. How are urls mapped to website hosted on a server in Bangalore?
+Each computer has its own IP address. The server in Bangalore will also have its own IP address. The DNS database will link the particular URL to the IP address of the server .The IP address is found by the browser through the process described in the first question.
+
+
+c. Read up in brief about TCP and UDP, that enable your request to reach a particular
+server, hopping from one router to another.
+
+The function of routing the request is performed by the network layer in the TCP/IP protocol.It handles the service requests from the transport layer and further forwards the service request to the data link layer.The network layer translates the logical addresses into physical addressesIt determines the route from the source to the destination and also manages the traffic problems such as switching, routing and controls the congestion of data packets.The main role of the network layer is to move the packets from sending host to the receiving host. 
+In Network layer, a router is used to forward the packets. Every router has a forwarding table. A router forwards a packet by examining a packet's header field and then using the header field value to index into the forwarding table. The value stored in the forwarding table corresponding to the header field value indicates the router's outgoing interface link to which the packet is to be forwarded. A router is a networking device that forwards the packet based on the information available in the packet header and forwarding table.The routing algorithms are used for routing the packets.
+Transmission Control Protocol (TCP) is a host-to-host protocol that provides reliable, connection-oriented communication over IP networks between two endpoints. TCP uses virtual ports to create a virtual end-to-end connection that can reuse the physical connections between two computers. 
+The TCP three-way handshake in Transmission Control Protocol (also called the TCP-handshake; three message handshake and/or SYN-SYN-ACK) is the method used by TCP set up a TCP/IP connection over an Internet Protocol based network. 
+
+1.	Host A sends a TCP SYNchronize packet to Host B
+2.	Host B receives A's SYN
+3.	Host B sends a SYNchronize-ACKnowledgement
+4.	Host A receives B's SYN-ACK
+5.	Host A sends ACKnowledge
+6.	Host B receives ACK.
+7.	TCP socket connection is ESTABLISHED.
+
+UDP transmits the data directly to the destination computer without verifying whether the receiver is ready to receive or not. It is a Connectionless protocol.It is an unreliable protocol. It neither takes the acknowledgement, nor it retransmits the damaged frame.However, because User Datagram Protocol (UDP) skips the handshaking and is focused on pure transmission, User Datagram Protocol (UDP) has lower overhead and is thus faster than TCP. UDP will provide better throughput on a network where the physical and datalink layer protocols are reliable.
+
+d. What does setting up a server even mean?
+
+
+Setting up a server means relegating the role of a server to a particular computer. It consists of installing a server operating system on the machine. Then another software is installed which helps us have remote access to the server. After that different software like FTP-server software , HTTP support software is installed on the basis of what kind of server(file server, webserver) you are setting up. After that different settings like creating user accounts, passwords, upload speed, maximum connections are done. After that the server is activated by putting on the network(for local servers) and eventually on the internet.
+At last get a domain name for your server (free or paid) which will be linked to your server’s IP address and will be used by the client to send requests to the server.
+
+
+e. Get an overall idea of how a server resolves a request? [ Google Apache and NginX, and
+see what role they play].
+
+Once the TCP connection is established, the browser will send a GET request asking for maps.google.com web page. If you’re entering credentials or submitting a form, this could be a POST request. This request will also contain additional information such as browser identification (User-Agent header), types of requests that it will accept (Accept header) etc. The server contains a webserver (i.e., Apache, IIS) that receives the request from the browser and passes it to a request handler to read and generate a response. The request handler is a program (written in ASP.NET, PHP, Ruby, etc.) that reads the request, its’ headers, and cookies to check what is being requested and also update the information on the server if needed. Then it will assemble a response in a particular format (JSON, XML, HTML). The server response contains the web page you requested as well as the status code, compression type (Content-Encoding), how to cache the page (Cache-Control), any cookies to set, privacy information, etc.
+
+f. Suppose you built a html page for the first time [you should if you haven’t already :P],and you are very enthusiastic to show it to your friend on his device. How would youdo this if you are not allowed to share your code with him or upload your website. [Every laptop is a server. There’s actually a place like 127.0.0.1)
+
+Make your laptop a server by installing the server OS and installing HTTP support(like Apache) to handle HTTP requests. Set up your server according to the steps above. Get a domain name and then connect your computer to the internet. Now the friend’s computer can act as a client and when the client enters the domain name on his browser a TCP connection is established between the server and the client and then the client sends an HTTP request and you can configure your server to send back the HTML page as a response.
+
+2. Django helps us in creating a website and managing databases hassle-free.  We don’t have to worry about writing SQL-queries to access the database. We can describe the database layout in Python code. The extensive Django API lets us access the data without writing additional code using built-in functions.
+
+
+Django web applications group the code that handles different steps into separate files:
+•	URLs:A URL mapper is used to redirect HTTP requests to the appropriate view based on the request URL. The URL mapper can also match particular patterns of strings or digits that appear in a URL and pass these to a view function as data.
+•	View: A view is a request handler function, which receives HTTP requests and returns HTTP responses. Views access the data needed to satisfy requests via models, and delegate the formatting of the response to templates.
+•	Models: Models are Python objects that define the structure of an application's data, and provide mechanisms to manage (add, modify, delete) and query records in the database. 
+•	Templates: A template is a text file defining the structure or layout of a file (such as an HTML page), with placeholders used to represent actual content. A view can dynamically create an HTML page using an HTML template, populating it with data from a model. 
+
+
+                             Think
+
+Q1.
+
+ Database Schema for Book
+
+Data members-
+•	Name: It consists of the name entered by the lending user as a string
+•	Author: 
+•	ISBN: This will serve as the unique ID for each book in the database as it is different for each book and edition
+•	Keywords: I suggest this field should contain small keywords describing the book like mystery, adventure, emotional etc. and words in the book name and author name like ‘prejudice’, ‘Eliot’, ‘Twain’ etc.
+•	Short description: This contain a short description of the book for the borrower to read. 
+•	Lenders: This will contain the ID of the users who are lending this book. Each ID will be followed by an additional bit which will decide if the book is available with the lender at the moment.(0 for unavailable and 1 for available).This bit can be toggled by the vendor
+
+
+
+
+Note-: One suggestion is that the name and author of the book could be extracted from the Internet using the ISBN database. While entering a book, a lender could just enter the ISBN number on the back of his copy. First the app will look through its existing database to see if the book has been added. If so the lender will be added to the list of lenders for that book.
+If not, the app will search the ISBN database for the book and will add the book to its own database.
+Failing all this the lender will be prompted to make his own book object and enter the name and author and short description himself. 
+This will help in maintain a unique ‘Name’ and ‘Author’ for the book.
+
+Database Scheme for Users:
+
+Private Members:
+•	Name
+•	UserID- This will serve as the primary key as it is unique
+•	Username
+•	Password
+•	Address
+•	Phone Number
+•	Email
+•	Requests: This field will store current borrow requests by other users.It will store a list of tuples of the form – [(“UserID”,” BookID(ISBN) “),…]
+•	LentBooks: This will include all the books the user has lent and the user ID of the user to which it is lent
+
+
+Public Members: Members visible to other users
+
+•	Nickname: This will be the name visible to all the users on the interface of the app
+•	AvailableBooks: This consists list of the currently available books
+
+When a user approves a request he can share some of the private data members to the borrower to contact him.
+
+Relationships:
+A book object is connected to the user database through the list of lenders.
+
+A user object is connected to the book database through the ‘Lentbooks’ and ‘AvailableBooks’ data member.
+ 
+
+
+Q2. 
+
+The best way to do this would be to create an ‘Author’ class which contains data members:
+1.Name
+2.Books: List of ISBN numbers of books the author has written. This list is updated every time a new book object is created in the app database.
+
+Then the app should maintain a list of ‘Author’ objects. An ‘Author’ object is added to the list every time a book from a new author is created. Every Author object is added such that the list is ordered lexicographically on the basis of author names.
+
+Whenever the user searches for the author, the user’s search string is broken down into words and their substrings(This step is necessary as the user may not have entered the name as it is stored in the database or the name may not be fully correct).
+Then the list of ‘Authors’ is searched using these words and substrings. The search takes O(logN) time as the list is maintained lexicographically.
+Then the search results are displayed according to the degree to which the author names match the search string.
+
+
+
+Q3a.
+In ‘prioritizer.py’, a quantity called weight is calculated which describes the order in which events should be shown on the dashboard. Some constants have been declared which decide which factor gets how much weightage.
+The weight is calculated on the basis of time for the event to start and end, length of the event and the number of event bodies the user follows. There is also a bonus assigned for events which are promoted and a penalty for not being tagged in a restricted audience.
+
+Penalty for not being tagged in a restricted audience is very high as NOT_TAG_TARGET_PENALTY = 2000 .
+Penalty for finished events is also high(600)
+Next most important factor is ‘self.start_time_diff’ as WEIGHT_START_TIME = 800.
+After that, if the user follows the bodies associated with the event then there is also a bonus which can be a maximum of 400.
+
+
+Q3b.
+
+•	Let’s say base weightage is 1000.
+•	The app will keep a record of the books requested(not necessarily approved) by the between today and a specific period preceding now.(let’s say 3 months before). If there are is a specific percentage of books from the same author, books by that author will be given a lot of bonus (let’s say 700). 
+•	Books which have been requested previously will have weight=0.
+•	Then information will be collected from the ‘Keywords’ data member.             The keyword which is common to x% of the requested books will be assigned a value ‘val’ say x*2.5. Default value of ‘val’ is zero.
+        If a book has a keyword, ‘val’ of the keyword will be added to the weight.
+•	I will access the search record to check keywords which have been search frequently and appropriate bonus will be added to weight if the book has this keyword. 
+•	The keywords and authors of books visited(not requested) will also be given a weightage around 50% less than the requested weightage. 
+•	There can also be a little bonus for books available in the vicinity of the borrower. (Let’s say 50/x where x is the distance of the nearest lender in km)
+
+
+
+
+
+
+ 
+
